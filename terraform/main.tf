@@ -1,6 +1,6 @@
 # RESOURCE: VPC
 resource "aws_vpc" "vpc" {
-    cidr_block           = "10.0.0.0/16"
+    cidr_block           = "20.0.0.0/16"
     enable_dns_hostnames = true
 }
 
@@ -13,14 +13,14 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_subnet" "sn_pub_az1a" {
     vpc_id                  = aws_vpc.vpc.id
     availability_zone       = "us-east-1a"
-    cidr_block              = "10.0.1.0/24"
+    cidr_block              = "20.0.1.0/24"
     map_public_ip_on_launch = true
 }
 
 resource "aws_subnet" "sn_pub_az1b" {
     vpc_id                  = aws_vpc.vpc.id
     availability_zone       = "us-east-1b"
-    cidr_block              = "10.0.2.0/24"
+    cidr_block              = "20.0.2.0/24"
     map_public_ip_on_launch = true
 }
 
@@ -57,7 +57,7 @@ resource "aws_security_group" "vpc_sg_pub" {
         from_port   = "0"
         to_port     = "0"
         protocol    = "-1"
-        cidr_blocks = ["10.0.0.0/16"]
+        cidr_blocks = ["20.0.0.0/16"]
     }
     ingress {
         from_port   = "22"
@@ -85,6 +85,10 @@ resource "aws_instance" "instance-1a" {
     vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
     user_data              = "${base64encode(data.template_file.user_data.rendered)}"
     key_name               = "vockey"
+    tags = {
+    Aluno = "Denis Bolla - instance 1"
+    Owner = "IaC 2025-01 Checkpoint 02"
+  }
 }
 
 resource "aws_instance" "instance-1b" {
@@ -94,6 +98,10 @@ resource "aws_instance" "instance-1b" {
     vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
     user_data              = "${base64encode(data.template_file.user_data.rendered)}"
     key_name               = "vockey"
+    tags = {
+    Aluno = "Denis Bolla - instance 2"
+    Owner = "IaC 2025-01 Checkpoint 02"
+  }
 }
 
 resource "aws_instance" "instance-1c" {
@@ -103,6 +111,10 @@ resource "aws_instance" "instance-1c" {
     vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
     user_data              = "${base64encode(data.template_file.user_data.rendered)}"
     key_name               = "vockey"
+    tags = {
+    Aluno = "Denis Bolla - instance 3"
+    Owner = "IaC 2025-01 Checkpoint 02"
+  }
 }
 
 resource "aws_instance" "instance-1d" {
@@ -112,6 +124,10 @@ resource "aws_instance" "instance-1d" {
     vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
     user_data              = "${base64encode(data.template_file.user_data.rendered)}"
     key_name               = "vockey"
+    tags = {
+    Aluno = "Denis Bolla - instance 4"
+    Owner = "IaC 2025-01 Checkpoint 02"
+  }
 }
 
 resource "aws_instance" "instance-1e" {
@@ -121,6 +137,10 @@ resource "aws_instance" "instance-1e" {
     vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
     user_data              = "${base64encode(data.template_file.user_data.rendered)}"
     key_name               = "vockey"
+    tags = {
+    Aluno = "Denis Bolla - instance 5"
+    Owner = "IaC 2025-01 Checkpoint 02"
+  }
 }
 
 resource "aws_instance" "instance-1f" {
@@ -130,6 +150,10 @@ resource "aws_instance" "instance-1f" {
     vpc_security_group_ids = [aws_security_group.vpc_sg_pub.id]
     user_data              = "${base64encode(data.template_file.user_data.rendered)}"
     key_name               = "vockey"
+      tags = {
+    Aluno = "Denis Bolla - instance 6"
+    Owner = "IaC 2025-01 Checkpoint 02"
+  }
 }
 
 # RESOURCE: LOAD BALANCER TARGET GROUP AND ITS MEMBERS
