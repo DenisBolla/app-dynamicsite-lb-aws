@@ -152,6 +152,30 @@ resource "aws_lb_target_group_attachment" "ec2_lb_tg-instance_1b" {
     port             = 80
 }
 
+resource "aws_lb_target_group_attachment" "ec2_lb_tg-instance_1c" {
+  target_group_arn = aws_lb_target_group.ec2_lb_tg.arn
+  target_id        = aws_instance.instance-1c.id
+  port             = 80
+}
+
+resource "aws_lb_target_group_attachment" "ec2_lb_tg-instance_1d" {
+  target_group_arn = aws_lb_target_group.ec2_lb_tg.arn
+  target_id        = aws_instance.instance-1d.id
+  port             = 80
+}
+
+resource "aws_lb_target_group_attachment" "ec2_lb_tg-instance_1e" {
+  target_group_arn = aws_lb_target_group.ec2_lb_tg.arn
+  target_id        = aws_instance.instance-1e.id
+  port             = 80
+}
+
+resource "aws_lb_target_group_attachment" "ec2_lb_tg-instance_1f" {
+  target_group_arn = aws_lb_target_group.ec2_lb_tg.arn
+  target_id        = aws_instance.instance-1f.id
+  port             = 80
+}
+
 # RESOURCE: LOAD BALANCER ENGINE
 resource "aws_lb" "ec2_lb" {
     name               = "ec2-lb"
